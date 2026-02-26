@@ -13,7 +13,8 @@ def textToImageFnc(prompt_data):
             {
                 "text":prompt_data,
             }
-        ]
+        ],
+        "mode": "text-to-image",
         "output_format": "png",
         "cfg_scale": 7.5,       
         "seed":80,
