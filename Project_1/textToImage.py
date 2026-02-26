@@ -1,6 +1,7 @@
 import boto3
 import json
 import base64
+import os
 
 image_counter = 0
 
