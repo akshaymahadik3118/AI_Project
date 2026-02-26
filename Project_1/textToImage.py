@@ -30,8 +30,8 @@ def textToImageFnc(prompt_data):
     raw_body = response["body"].read()
     response_body = json.loads(raw_body)
   
-  if "images" in response_body and response_body["images"]:
-      encoded_image = response_body["images"][0]
+    if "images" in response_body and response_body["images"]:
+        encoded_image = response_body["images"][0]
     else:
         raise RuntimeError(f"Unexpected response format: {response_body}")
 
