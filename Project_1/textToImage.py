@@ -9,7 +9,11 @@ def textToImageFnc(prompt_data):
     bedrock = boto3.client(service_name = "bedrock-runtime", region_name="ap-south-1" )
 
     payload = {
-        "prompt': 'A car made out of vegetables.",
+        "prompt": [
+            {
+                "text":prompt_data,
+            }
+        ]
         "mode": "text-to-image",
         "output_format": "png",
         "cfg_scale": 7.5,       
