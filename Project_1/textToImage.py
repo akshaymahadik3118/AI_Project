@@ -9,15 +9,10 @@ def textToImageFnc(prompt_data):
     bedrock = boto3.client(service_name = "bedrock-runtime", region_name="us-west-2" )
 
     payload = {
-        "prompt": [
-            {
-                "text":prompt_data,
-            }
-        ],
+        "prompt": "A futuristic city in Mumbai during monsoon",
         "mode": "text-to-image",
         "output_format": "png",
-        "cfg_scale": 7.5,       
-        "seed":80,
+        "cfg_scale": 7.5,
     }
 
     body=json.dumps(payload)
