@@ -2,7 +2,7 @@ import boto3
 import json 
 
 def textToTextFnc(prompt_data):
-    bedrock = boto3.client(service_name = "bedrock-runtime")
+    bedrock = boto3.client(service_name = "bedrock-runtime" , region_name="ap-south-1" )
 
     payload = {
         "prompt":f"\n\nHuman:{prompt_data}\n\nAssistant:",
@@ -15,7 +15,7 @@ def textToTextFnc(prompt_data):
 
     response = bedrock.invoke_model(
         body=body,
-        modelId="anthropic.claude-v2.1",
+        modelId='amazon.titan-text-express-v1',
         accept='application/json',
         contentType='application/json',
     )
