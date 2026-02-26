@@ -8,7 +8,7 @@ def textToTextFnc(prompt_data):
         "anthropic_version": "bedrock-2023-05-31",
          "max_tokens": 200,
         "temperature": 0.7,
-        "messages": [{"role": "user", "content": [{"type": "text", "text": "Write a haiku about monsoon rain in Mumbai."}]}],
+        "messages": [{"role": "user", "content": [{"type": "text", "text": prompt_data}]}],
     }
 
     body = json.dumps(payload)
@@ -22,4 +22,8 @@ def textToTextFnc(prompt_data):
 
 
     response_body = json.loads(response.get('body').read())
-    return response_body.get('completion')
+    parts = response_body.get("content", [])
+    text = "".join(p.get("text", "") for p in parts if p.get("type") == "text")
+
+    return text
+    
