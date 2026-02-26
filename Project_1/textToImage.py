@@ -9,7 +9,7 @@ def textToImageFnc(prompt_data):
     bedrock = boto3.client(service_name = "bedrock-runtime", region_name="us-west-2" )
 
     payload = {
-        "prompt": "A futuristic city in Mumbai during monsoon",
+        "prompt": prompt_data,
         "mode": "text-to-image",
         "output_format": "png",
         "aspect_ratio": "1:1"
@@ -28,15 +28,22 @@ def textToImageFnc(prompt_data):
         contentType=content_type,
     )
 
+    raw_body = response["body"].read()
+    response_body = json.loads(raw_body)
+  
+  if "images" in response_body and response_body["images"]:
+        encoded_image = response_body["images"][0]
+    else:
+        raise RuntimeError(f"Unexpected response format: {response_body}")
 
-    response_body = json.loads(response.get("body").read())
-    artifact = response_body.get("artifacts")[0]
-    encoded_image = artifact.get("base64").encode('utf-8') #encode the image to bytes
-    image_bytes = base64.b64decode(encoded_image) 
+    image_bytes = base64.b64decode(encoded_image)
+
+        os.makedirs("static/trash", exist_ok=True)
 
     output_image_path = f"static/trash/{image_counter}.png"
     image_counter += 1
-    with open(output_image_path, 'wb') as image_file:
+
+    with open(output_image_path, "wb") as image_file:
         image_file.write(image_bytes)
 
     return output_image_path
