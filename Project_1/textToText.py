@@ -15,7 +15,7 @@ def textToTextFnc(prompt_data):
 
     response = bedrock.invoke_model(
         body=body,
-        modelId='amazon.titan-text-express-v1',
+        modelId='anthropic.claude-sonnet-4-5-20250929-v1:0',
         accept='application/json',
         contentType='application/json',
     )
