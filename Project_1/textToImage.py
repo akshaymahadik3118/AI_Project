@@ -24,7 +24,7 @@ def textToImageFnc(prompt_data):
 
     accept="application/json"
     content_type="application/json"
-    model_id='stability.sd3-large-v1:0'
+    model_id='stability.sd3-5-large-v1:0'
 
     response = bedrock.invoke_model(
         body=body,
