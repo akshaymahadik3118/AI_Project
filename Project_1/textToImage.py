@@ -27,19 +27,17 @@ def textToImageFnc(prompt_data):
         accept=accept,
         contentType=content_type,
     )
-
     raw_body = response["body"].read()
     response_body = json.loads(raw_body)
   
   if "images" in response_body and response_body["images"]:
-        encoded_image = response_body["images"][0]
+      encoded_image = response_body["images"][0]
     else:
         raise RuntimeError(f"Unexpected response format: {response_body}")
 
     image_bytes = base64.b64decode(encoded_image)
-
-        os.makedirs("static/trash", exist_ok=True)
-
+    
+    os.makedirs("static/trash", exist_ok=True)
     output_image_path = f"static/trash/{image_counter}.png"
     image_counter += 1
 
