@@ -12,7 +12,7 @@ def textToImageFnc(prompt_data):
         "prompt": "A futuristic city in Mumbai during monsoon",
         "mode": "text-to-image",
         "output_format": "png",
-        "cfg_scale": 7.5,
+        "aspect_ratio": "1:1"
     }
 
     body=json.dumps(payload)
