@@ -1,0 +1,17 @@
+install git in the machine to clone the files from Github repository.
+  yum install git
+
+install python pip to run various dependencies such as boto3/flash
+  yum install python3-pip
+
+Configure AWS to associate with bedrock
+  configure aws
+  access key-id --
+  access key --
+  region "mention your default region"
+
+Install various dependencies by using pip3 command
+  pipv3 install boto3 "version name"
+  pipv3 install Flash "version name"
+
+pipv3 install -r requirements.txt --- this command install all softwares mentioned in the file - requirements
